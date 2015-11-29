@@ -5,6 +5,11 @@ var CZvalues = require('./values.js');
 module.exports = postcss.plugin('postcss-czech-stylesheets', function (opts) {
     opts = opts || {};
 
+    String.prototype.replaceAll = function(str1, str2, ignore)
+    {
+        return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+    };
+
     return function (css) {
 
         css.walkDecls(function transformDecl(decl) {
@@ -23,7 +28,7 @@ module.exports = postcss.plugin('postcss-czech-stylesheets', function (opts) {
                 var value = CZvalues[key];
 
                 if (typeof value === 'string') {
-                    decl.value = decl.value.replace(value, key);
+                    decl.value = decl.value.replaceAll(value, key);
                     continue;
                 }
 
@@ -34,8 +39,8 @@ module.exports = postcss.plugin('postcss-czech-stylesheets', function (opts) {
             }
 
             // Important
-            if (decl.value.indexOf('!důležité') >= 0) {
-                decl.value = decl.value.replace(/\s*!důležité\s*/, '');
+            if (decl.value.indexOf('!kurva') >= 0) {
+                decl.value = decl.value.replace(/\s*!kurva\s*/, '');
                 decl.important = true;
             }
         });

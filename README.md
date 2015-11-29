@@ -8,23 +8,31 @@
 $ npm install postcss-czech-stylesheets --save-dev
 ```
 
-## Preview
+## Example
 
 ### Input
 
 ```css
-.foo {
-    barva: bílá;
-    pozadí: bílé !důležité;
+.error-msg {
+    zobrazení: blok;
+    levý-rámeček: 3px pevné červené;
+    velikost-písma: 15px;
+    výška-řádku: 20px;
+    pozadí: průhledné;
+    barva: červená !kurva;
 }
 ```
 
 ### Output
 
 ```css
-.foo {
-    color: white;
-    background: white !important;
+.error-msg {
+    display: block;
+    border-left: 3px solid red;
+    font-size: 15px;
+    line-height: 20px;
+    background: transparent;
+    color: red !important;
 }
 ```
 
