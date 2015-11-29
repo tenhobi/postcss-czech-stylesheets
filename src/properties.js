@@ -44,7 +44,7 @@ module.exports = {
   "border-bottom-left-radius": "poloměr-levého-dolního-rámečku",
   "border-bottom-right-radius": "poloměr-pravého-dolního-rámečku",
   "border-image": "obrázek-rámečku",
-  "border-image-outset": "počáek-obrázku-rámečku",
+  "border-image-outset": "počátek-obrázku-rámečku",
   "border-image-repeat": "opakování-obrázku-rámečku",
   "border-image-slice": "plátek-obrázku-rámečku",
   "border-image-source": "zdroj-obrázku-rámečku",
