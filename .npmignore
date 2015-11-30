@@ -1,4 +1,4 @@
 node_modules/
-.idea/
-.gitignore
 npm-debug.log
+.gitignore
+.editorconfig
