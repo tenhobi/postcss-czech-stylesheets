@@ -5,7 +5,7 @@
 ## Installation
 
 ```console
-$ npm install postcss-czech-stylesheets --save-dev
+$ npm install --save-dev postcss-czech-stylesheets
 ```
 
 ## Example
@@ -44,18 +44,19 @@ $ npm install postcss-czech-stylesheets --save-dev
 var gulp = require('gulp');
 var rename = require('gulp-rename');
 var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer')
 var czechCSS = require('postcss-czech-stylesheets');
-var autoprefixer = require('autoprefixer-core')
 
 gulp.task('default', function () {
     var processors = [
-        autoprefixer({ browsers: ['> 0%'] }),
-        czechCSS()
+        czechCSS(),
+        autoprefixer({ browsers: ['> 0%'] })
     ];
-    gulp.src('src/**/*.css')
+    
+    return gulp.src('src/**/*.css')
         .pipe(postcss(processors))
         .pipe(rename('output.css'))
-        .pipe(gulp.dest('build'))
+        .pipe(gulp.dest('build'));
 });
 ```
 
