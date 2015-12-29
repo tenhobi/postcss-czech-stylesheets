@@ -1,14 +1,10 @@
 var postcss = require('postcss');
 var CZproperties = require('./properties.js');
 var CZvalues = require('./values.js');
+var importantValues = ['!kurva', '!dulezite', '!funguj'];
 
 module.exports = postcss.plugin('postcss-czech-stylesheets', function (opts) {
     opts = opts || {};
-
-    String.prototype.replaceAll = function(str1, str2, ignore)
-    {
-        return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
-    };
 
     return function (css) {
 
@@ -28,7 +24,7 @@ module.exports = postcss.plugin('postcss-czech-stylesheets', function (opts) {
                 var value = CZvalues[key];
 
                 if (typeof value === 'string') {
-                    decl.value = decl.value.replaceAll(value, key);
+                    decl.value = decl.value.replace(new RegExp(value, 'g'), key);
                     continue;
                 }
 
@@ -38,11 +34,14 @@ module.exports = postcss.plugin('postcss-czech-stylesheets', function (opts) {
                 }
             }
 
-            // Important
-            if (decl.value.indexOf('!kurva') >= 0) {
-                decl.value = decl.value.replace(/\s*!kurva\s*/, '');
-                decl.important = true;
+            // Replace Important
+            for (var i = 0; i < importantValues.length; i++) {
+                if (decl.value.indexOf(importantValues[i]) >= 0) {
+                    decl.value = decl.value.replace(new RegExp(importantValues[i], 'gi'), '');
+                    decl.important = true;
+                }
             }
+
         });
 
     };
