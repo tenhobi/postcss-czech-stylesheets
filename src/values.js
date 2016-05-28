@@ -222,5 +222,7 @@ module.exports = {
         "pevný",
         "pevně",
         "pevné"
-    ]
+    ],
+    "pixelated": "pixelový",
+    "crisp-edges": "ostré-hrany"
 };
