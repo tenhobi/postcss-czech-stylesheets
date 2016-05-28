@@ -135,5 +135,6 @@ module.exports = {
   "zoom": "přiblížení",
   "filter": "filtr",
   "user-select": "výběr-uživatele",
-  "src": "zdroj"
+  "src": "zdroj",
+  "image-rendering": "vykreslení-obrázku"
 };
