@@ -122,7 +122,7 @@ module.exports = {
   "text-shadow": "stín-textu",
   "word-break": "zalomení-slova",
   "word-wrap": "zabalení-slova",
-  "transform": "transofrmace",
+  "transform": "transformace",
   "transform-origin": "původ-transformace",
   "transform-style": "styl-transformace",
   "transition": "přechod",
